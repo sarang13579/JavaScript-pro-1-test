@@ -60,5 +60,5 @@ Some ideas might be to validate the form data to ensure the data is acceptable a
 
 Although not a requirement, we recommend using Git from the very beginning. Make sure to commit often and to use well-formatted commit messages that conform to our Git Style Guide.
 
-### Code Reference
+### Code Reference and app working logic steps
 https://github.com/jeffcad/Udacity-Intermediate-JavaScript-Nanodegree-Project-1
