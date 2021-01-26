@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,36 +14,51 @@
     <!-- Link to app.js with defer till HTML render -->
     <script defer src="app.js"></script>
 </head>
+
 <body>
     <header>
-        <h2>Natural History Museum</h2> 
+        <h2>Natural History Museum</h2>
         <h1>Dinosaurs</h1>
-        <h3>How do you compare?</h3>
+        <h5>How do you compare?</h5>
     </header>
     <!-- Form to get user input -->
-    <form id="dino-compare">
+    <form id="dino-compare" name="dino-compare">
         <div class="form-container">
-            <p>Name:</p>
-            <input id="name" class="form-field__full" type="name" name="name">
-            <p>Height</p>
-            <label>Feet: <input id="feet" class="form-field__short" type="number" name="feet"></label>
+            <label for="name">
+                <p>Name:</p>
+            </label>
+            <input id="name" class="form-field__full" type="name" name="name" required>
+            <label for="height">
+                <p>Height</p>
+            </label>
+            <label>Feet: <input id="feet" class="form-field__short" type="number" name="feet" required></label>
             <label>inches: <input id="inches" class="form-field__short" type="number" name="inches"></label>
-            <p>Weight:</p>
-            <label><input id="weight" class="form-field__full" type="number" name="weight">lbs</label>
-            <p>Diet:</p>
+            <label for="weight">
+                <p>Weight:(lbs)</p>
+            </label>
+            <input id="weight" class="form-field__full" type="number" name="weight" required>
+            <label for="diet">
+                <p>Diet:</p>
+            </label>
             <select id="diet" class="form-field__full" name="diet">
-                <option>Herbavor</option>
-                <option>Omnivor</option>
-                <option>Carnivor</option>
+                <option>Herbavore</option>
+                <option>Omnivore</option>
+                <option>Carnivore</option>
             </select>
-            <div id="btn">Compare Me!</div>
+            <button type="button" id="btn">Compare Me!</button>
         </div>
+        <!-- Form Validation Using JavaScript API -->
+        <p id="look_msg" class="look_msg"></p>
     </form>
     <!-- .grid to attach tiles to -->
-    <main id="grid"></main>
+    <main id="grid">
+    </main>
+    <button type="button" id="back" class="back">Back</button>
     <footer>
         <!-- Include information source -->
-        <p class="fine-print">Data Sourced from <a href="https://www.wikipedia.org/">Wikipedia.org</a>, all numbers are approximations.</p>
+        <p class="fine-print">Data Sourced from <a href="https://www.wikipedia.org/">Wikipedia.org</a>, all numbers are
+            approximations.</p>
     </footer>
 </body>
+
 </html>
