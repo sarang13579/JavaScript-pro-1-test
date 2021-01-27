@@ -330,7 +330,6 @@ function onClicking(e) {
     const getdinoInfo = dinoInfo();
     const humanValue = humanInfoValue();
     update(humanValue, getdinoInfo);
-    // humanInfoValue();
 
 }
 
