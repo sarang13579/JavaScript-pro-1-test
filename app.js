@@ -290,11 +290,16 @@ function update(humanValue, dinoArray) {
 
     const fragment = document.createDocumentFragment();
 
-    for (let i = 0; i < 9; i++) {
-        let photo_grid = i === 4 ? humanFact(humanValue) : dinoFacts(dinoArray[i], humanValue);
-
+    dinoArray.forEach((dino, index) => {
+        if (index === 4) {
+          fragment.appendChild(humanFact(humanValue));
+        }
+        else {
+        const photo_grid = dinoFacts(dino, humanValue);
         fragment.appendChild(photo_grid);
-    }
+        }
+      });
+
     document.getElementById('grid').appendChild(fragment);
 }
 
@@ -325,6 +330,8 @@ function onClicking(e) {
     const getdinoInfo = dinoInfo();
     const humanValue = humanInfoValue();
     update(humanValue, getdinoInfo);
+    // humanInfoValue();
+
 }
 
 function back() {
