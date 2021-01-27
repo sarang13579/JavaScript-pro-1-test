@@ -86,8 +86,7 @@ function DinoConstructor(dinoObj) {
     this.fact = dinoObj.fact;
 }
 
-DinoConstructor.prototype = {
-    compareWeight: function (human_weight) {
+DinoConstructor.prototype.compareWeight = function (human_weight) {
         const weightRatio = (this.weight / human_weight).toFixed(1);
         // Comparison with human and Dino data using ratio and facts return
         if (weightRatio > 1) {
@@ -98,8 +97,9 @@ DinoConstructor.prototype = {
         }
         return `Your weight is same as ${this.species}!`;
 
-    },
-    compareHeight: function (human_height) {
+    };
+
+    DinoConstructor.prototype.compareWeight = function (human_height) {
         const heightRatio = (this.height / human_height).toFixed(1);
         // Comparison with human and Dino data using ratio and facts return
         if (heightRatio > 1) {
@@ -109,8 +109,9 @@ DinoConstructor.prototype = {
             return `You are ${(1/heightRatio).toFixed(1)} times taller than ${this.species}!`;
         }
         return `You are the same height as ${this.species}!`;
-    },
-    compareDiet: function (human_diet) {
+    };
+
+    DinoConstructor.prototype.compareWeight = function (human_diet) {
         // Comparison determining whether a herbivore, carnivore or an omnivore and facts return
 
         if (human_diet === this.diet) {
@@ -118,8 +119,8 @@ DinoConstructor.prototype = {
         } else {
             return `You are ${human_diet}, but ${this.species} is ${this.diet}.`;
         }
-    }
-};
+    };
+
 
 
 // Create Dino Objects
@@ -185,8 +186,7 @@ function iifeFn() {
 // Create Dino Compare Method 3
 // NOTE: Weight in JSON file is in lbs, height in inches.
 
-DinoConstructor.prototype = {
-    compareWeight: function (human_weight) {
+DinoConstructor.prototype.compareWeight = function (human_weight) {
         const weightRatio = (this.weight / human_weight).toFixed(1);
         // Comparison with human and Dino data using ratio and facts return
         if (weightRatio > 1) {
@@ -197,8 +197,9 @@ DinoConstructor.prototype = {
         }
         return `Your weight is same as ${this.species}!`;
 
-    },
-    compareHeight: function (human_height) {
+    };
+
+    DinoConstructor.prototype.compareHeight = function (human_height) {
         const heightRatio = (this.height / human_height).toFixed(1);
         // Comparison with human and Dino data using ratio and facts return
         if (heightRatio > 1) {
@@ -208,8 +209,9 @@ DinoConstructor.prototype = {
             return `You are ${(1 / heightRatio).toFixed(1)} times taller than ${this.species}!`;
         }
         return `You are the same height as ${this.species}!`;
-    },
-    compareDiet: function (human_diet) {
+    };
+
+    DinoConstructor.prototype.compareDiet = function (human_diet) {
         // Comparison determining whether a herbivore, carnivore or an omnivore and facts return
 
         if (human_diet === this.diet) {
@@ -217,8 +219,7 @@ DinoConstructor.prototype = {
         } else {
             return `You are ${human_diet}, but ${this.species} is ${this.diet}.`;
         }
-    }
-};
+    };
 
 
 // Generate Tiles for each Dino in Array
@@ -247,22 +248,38 @@ function dinoFacts(dinoArray, humanValue) {
 
 
     // Create the new grid item for dinos
-    const newDiv = document.createElement('div');
-    newDiv.className = 'grid-item';
-    newDiv.innerHTML = `<h3>${dinoArray.species}</h3><img src="images/${(dinoArray.species.toLowerCase())}.png" alt="image of ${dinoArray.species}"><p>${fact}</p>`;
-
-    return newDiv;
+    // Generate tile elements
+    const contain = document.createElement("div");
+    const title = document.createElement("h3");
+    const img = document.createElement("img");
+    const fact_print = document.createElement("p");
+    const img_path = dinoArray.species.toLowerCase();
+    img.src = "images/" + img_path + ".png";
+    img.alt = "image of " + dinoArray.species;
+    title.innerHTML = dinoArray.species;
+    fact_print.innerHTML = fact;
+    contain.className = 'grid-item';
+    contain.innerHTML += title.outerHTML + img.outerHTML + fact_print.outerHTML;
+    return contain;
 }
 
 function humanFact(humanValue) {
 
     // Create the new grid item for human
-    const newDiv = document.createElement('div');
-    newDiv.className = 'grid-item';
-    newDiv.innerHTML = `<h3>${humanValue.name}</h3><img src="images/human.png" alt="image of human"><p>Height: ${humanValue.height} inches<br>Weight: ${humanValue.weight} lbs<br>Diet: ${humanValue.diet}</p>`;
-
-    return newDiv;
+    // Generate tile elements
+    const contain = document.createElement("div");
+    const title = document.createElement("h3");
+    const img = document.createElement("img");
+    const fact_print = document.createElement("p");
+    img.src = "images/human.png";
+    img.alt = "human info";
+    title.innerHTML = humanValue.name;
+    fact_print.innerHTML = `Height: ${humanValue.height} inches<br>Weight: ${humanValue.weight} lbs<br>Diet: ${humanValue.diet}`;
+    contain.className = 'grid-item';
+    contain.innerHTML += title.outerHTML + img.outerHTML + fact_print.outerHTML;
+    return contain;
 }
+
 // Add tiles to DOM
 
 // Remove form from screen
